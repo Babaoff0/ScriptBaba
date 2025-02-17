@@ -22,6 +22,13 @@ button2.Size = UDim2.new(0, 200, 0, 50)
 button2.Position = UDim2.new(0.5, -100, 0.7, -25)
 button2.Text = "Auto Farm VIP basic"
 
+-- Création du bouton de fermeture / ouverture
+local toggleButton = Instance.new("TextButton")
+toggleButton.Parent = screenGui
+toggleButton.Size = UDim2.new(0, 100, 0, 50)
+toggleButton.Position = UDim2.new(0, 10, 0, 10)
+toggleButton.Text = "Close"
+
 -- Variables pour l'état des scripts
 local actionEnabledHeart = false
 local actionEnabledVIP = false
@@ -107,5 +114,22 @@ button2.MouseButton1Click:Connect(function()
         button2.Text = "Off/On"
         autoFarmVIP()
         print("✅ Script Auto Farm VIP basic activé")
+    end
+end)
+
+-- Fonction pour gérer l'ouverture et la fermeture du menu
+local isMenuOpen = true  -- Variable pour savoir si le menu est ouvert ou fermé
+
+toggleButton.MouseButton1Click:Connect(function()
+    if isMenuOpen then
+        -- Fermer le menu
+        frame.Visible = false
+        toggleButton.Text = "Open"
+        isMenuOpen = false
+    else
+        -- Ouvrir le menu
+        frame.Visible = true
+        toggleButton.Text = "Close"
+        isMenuOpen = true
     end
 end)
